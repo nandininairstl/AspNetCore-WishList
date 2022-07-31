@@ -1,15 +1,9 @@
-﻿@model WishList.Models.Item
+﻿@model List<WishList.Models.Item>
 <h1>Wishlist</h1>
-<form>
-    <input asp-action = "create"/>
-    <a asp-action="create">Add item</a>
-    <ul>
-        foreach(var mod in WishList.Model.Item)
-        {
-            <li>mod.Description</li>
-            <a asp-action="delete" asp-route-id="Id">Delete</a>
-        }
-    </ul>
-    <span asp-validation-for = "Description"></span>
-    <button type="submit">Add Item</button>
-</form>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Description </li>
+        <li><a asp-action="delete" asp-route-id="@item.Id">Delete</a></li>
+    }
+</ul>
